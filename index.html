@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>FSBuy spreadsheet – bygg din egen inköpslista</title>
+  <meta name="description" content="Bygg en inköpslista med FSBuy spreadsheet. Hitta tio kategorier hos Hipobuyfind och använd svenska exempel för att jämföra modell, mått och bilddetaljer.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:title" content="FSBuy spreadsheet – bygg din egen inköpslista">
+  <meta property="og:description" content="En svensk guide till tio kategorier hos Hipobuyfind och till att jämföra produkter rad för rad.">
+  <!-- Googles resultatsida krävde verifiering. Ämnesurvalet bygger på tillgängliga sökträffar. -->
+  <style>
+    :root{color-scheme:light;--paper:#f3f1ee;--ink:#21201e;--muted:#5d5650;--line:#c8c2ba;--signal:#f9603b;--white:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 system-ui,sans-serif}
+    .wrap{width:min(100% - 2rem,70rem);margin-inline:auto}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2,h3{line-height:1.08}
+    h1{max-width:12ch;font-size:clamp(2.65rem,7vw,6.2rem);letter-spacing:-.07em}
+    h2{font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:-.045em}
+    h3{font-size:1.25rem}
+    p+p{margin-top:.65rem}
+    a{color:inherit}
+    a:focus-visible,summary:focus-visible,.scroll:focus-visible{outline:3px solid #88351f;outline-offset:3px}
+    .mast{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.25rem 1rem;padding-block:.7rem;border-bottom:1px solid var(--line)}
+    .brand{font-weight:850;overflow-wrap:anywhere}
+    .label{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .directory{padding-block:.85rem 1.2rem}
+    .directory ul{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;margin:.5rem 0 0;padding:1px;background:var(--line);list-style:none}
+    .directory a{display:flex;align-items:center;gap:.55rem;height:100%;min-height:2.75rem;padding:.45rem .65rem;background:var(--white);font-size:.9rem;font-weight:650;text-decoration:none;overflow-wrap:anywhere}
+    .directory span{color:var(--muted);font-size:.72rem;font-variant-numeric:tabular-nums}
+    .directory a:hover,.directory a:focus-visible{background:var(--signal);color:var(--ink)}
+    .directory a:hover span,.directory a:focus-visible span{color:inherit}
+    .hero{position:relative;isolation:isolate;display:grid;align-content:center;min-height:23rem;overflow:hidden;background:var(--ink);color:var(--white)}
+    .hero figure{position:absolute;inset:0 0 0 auto;width:43%;background:var(--signal)}
+    .hero img{display:block;width:100%;height:100%;object-fit:contain}
+    .hero figcaption{position:absolute;right:.65rem;bottom:.55rem;padding:.2rem .45rem;background:var(--ink);color:var(--white);font-size:.73rem}
+    .hero-copy{position:relative;width:57%;padding:clamp(1rem,4vw,3.6rem)}
+    .hero-copy .label{margin-bottom:.65rem;color:#ff967a}
+    .hero-copy p:last-child{max-width:44ch;margin-top:.85rem}
+    section{margin-block:clamp(2rem,6vw,4rem)}
+    .intro{max-width:68ch;margin:.7rem 0 1rem}
+    .scroll{overflow-x:auto}
+    table{width:100%;min-width:32rem;border-collapse:collapse;background:var(--white);text-align:left}
+    caption{text-align:left;padding:.55rem .7rem;background:var(--signal);font-weight:800}
+    th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+    thead th{background:#e7e2dc}
+    .notes article{display:grid;grid-template-columns:minmax(12rem,1fr) 2fr;gap:.55rem 1.3rem;padding-block:1rem;border-bottom:1px solid var(--line)}
+    .notes article:first-of-type{margin-top:.8rem;border-top:1px solid var(--line)}
+    .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-top:.9rem}
+    .gallery figure{background:var(--white);border:1px solid var(--line)}
+    .gallery img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#f8f7f5}
+    .gallery figcaption{padding:.45rem .6rem;font-size:.85rem}
+    .faq{max-width:52rem}
+    .faq h2{margin-bottom:.8rem}
+    details{border-top:1px solid var(--line)}
+    details:last-child{border-bottom:1px solid var(--line)}
+    summary{padding:.7rem .3rem;cursor:pointer;font-weight:750}
+    details p{padding:0 .3rem .85rem}
+    footer{border-top:1px solid var(--line);padding-block:1rem 2rem}
+    @media(max-width:52rem){.directory ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:40rem){
+      .directory ul,.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero figure{position:relative;inset:auto;width:100%;height:13.5rem}
+      .hero-copy{width:auto;grid-row:1}
+      .notes article{grid-template-columns:1fr}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "sv",
+    "name": "Vanliga frågor om FSBuy spreadsheet",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Vad är ett FSBuy spreadsheet?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Det är en produktlista i kalkylbladsformat som kan samla säljlänkar, varianter och egna anteckningar. Den här guiden visar hur du bygger en egen lista och länkar till kategorier hos Hipobuyfind."}
+      },
+      {
+        "@type": "Question",
+        "name": "Var hittar jag skorna och kläderna?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Använd kategorierna högst upp. De öppnar motsvarande katalogsidor hos Hipobuyfind. Kontrollera modell, storlek och aktuell tillgänglighet på den enskilda produktsidan."}
+      },
+      {
+        "@type": "Question",
+        "name": "Vad ska jag granska på ett QC-foto?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Kontrollera att bilden gäller rätt variant. Titta sedan på de detaljer som påverkar ditt val, till exempel sömmar, sulans kant eller ett spänne. För ett mått behöver du en bild där skalan går att läsa."}
+      },
+      {
+        "@type": "Question",
+        "name": "Hur jämför jag den uppskattade kostnaden till Sverige?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Räkna om varupriset till SEK med samma valutakurs för alla alternativ. Lägg till kända avgifter och uppskattad frakt. Kontrollera om importkostnader redan ingår innan du summerar."}
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/bxsvk/">
+</head>
+<body>
+  <header class="wrap">
+    <div class="mast">
+      <a class="brand" href="https://www.hipobuyfind.com">HIPOBUYFIND.COM</a>
+      <span class="label">Inköpsjournal · Svensk guide</span>
+    </div>
+    <nav class="directory" aria-labelledby="categories">
+      <p class="label" id="categories">Tio kategorier hos Hipobuyfind</p>
+      <ul>
+        <li><a href="https://hipobuyfind.com/category-911-Shoes.html"><span aria-hidden="true">01</span> Skor</a></li>
+        <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html"><span aria-hidden="true">02</span> Huvtröjor och tröjor</a></li>
+        <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html"><span aria-hidden="true">03</span> T-shirts</a></li>
+        <li><a href="https://hipobuyfind.com/category-914-Jackets.html"><span aria-hidden="true">04</span> Jackor</a></li>
+        <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html"><span aria-hidden="true">05</span> Byxor och shorts</a></li>
+        <li><a href="https://hipobuyfind.com/category-916-Headwear.html"><span aria-hidden="true">06</span> Huvudbonader</a></li>
+        <li><a href="https://hipobuyfind.com/category-917-Sets.html"><span aria-hidden="true">07</span> Matchande set</a></li>
+        <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html"><span aria-hidden="true">08</span> Underkläder</a></li>
+        <li><a href="https://hipobuyfind.com/category-919-Jersey.html"><span aria-hidden="true">09</span> Sporttröjor</a></li>
+        <li><a href="https://hipobuyfind.com/category-920-Accessories.html"><span aria-hidden="true">10</span> Accessoarer</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="label">Från träff till inköpsrad</p>
+        <h1>FSBuy spreadsheet</h1>
+        <p>Samla dina alternativ på ett ställe. Spara modell, variant och mått från produktsidan så att du kan öppna samma annons igen och jämföra den med nästa fynd.</p>
+      </div>
+      <figure>
+        <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embellished-varsity-jacket--HUL83WYSC62X_PM2_Front%20view.png?hei=480&amp;wid=480" width="480" height="480" fetchpriority="high" alt="Louis Vuitton-jacka i collegestil, fotograferad framifrån">
+        <figcaption>Bildreferens · Louis Vuitton</figcaption>
+      </figure>
+    </div>
+
+    <section aria-labelledby="log">
+      <h2 id="log">En rad per produktvariant</h2>
+      <p class="intro">I en inköpslista för FSBuy får varje färg och storlek en egen rad. Spara en direkt produktlänk, marknadsplats, artikelnummer och datum för senaste kontroll. En annons på Weidian, Taobao eller 1688 kan ändras. Med de fälten kan du lättare se om länken fortfarande leder till rätt variant.</p>
+      <div class="scroll" role="region" aria-label="Exempel på inköpsrader" tabindex="0">
+        <table>
+          <caption>Jämför produktvarianter med samma uppgifter</caption>
+          <thead><tr><th scope="col">Kategori</th><th scope="col">Spara från annonsen</th><th scope="col">Kontrollera före köp</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Sneakers</th><td>Modellkod, färgkod och EU-storlek</td><td>Innersulans längd i centimeter</td></tr>
+            <tr><th scope="row">Jackor och tröjor</th><td>Material, storlek och passform</td><td>Bröstvidd, axelbredd och ärmlängd</td></tr>
+            <tr><th scope="row">Kepsar och smycken</th><td>Material, spänne och finish</td><td>Huvudomkrets, armbandets innerlängd och stängning</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="notes" aria-labelledby="guides">
+      <h2 id="guides">Två sätt att gallra bland fynden</h2>
+      <article>
+        <h3>Kontrollera produktlänkar för FSBuy</h3>
+        <div>
+          <p>Öppna annonsen och matcha säljarens namn, modellkoden och färgvalet mot din sparade rad. Om en länk har slutat fungera, sök på modellkoden och kontrollera säljare och variant på nytt.</p>
+          <p>Jämför säljarens storlekstabell med ett plagg du redan har. Mät plagget plant och ta reda på om bröstmåttet avser bredd eller omkrets. För sporttröjor kan du även anteckna hur trycket ser ut i närbild.</p>
+        </div>
+      </article>
+      <article>
+        <h3>Granska QC-bilder och räkna frakt till Sverige</h3>
+        <div>
+          <p>QC står för kvalitetskontroll. För skor kan en närbild visa tåboxens form och sulans kant. För en jacka kan den visa dragkedja och foder. Anteckna vilka detaljer du har sett och vilka du behöver be om en bättre bild på.</p>
+          <p>Håll isär varupris, eventuell serviceavgift och frakt. Be om paketets vikt och mått om frakten beräknas efter volymvikt. Jämför alternativen i SEK och lämna kostnader som ännu är okända öppna i din lista.</p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="images">
+      <h2 id="images">Bildreferenser för detaljkontroll</h2>
+      <p class="intro">Studera sulans profil, kepsens paneler, tröjans halsringning och armbandets länkar. Märkesbilderna används som visuella exempel. Kategorilänkarna går till Hipobuyfinds sortiment.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://static.shoeprize.com/open_raffle/main_carousel/88069/FD0884-025-shoeprize-NIKE-ZOOM-VOMERO-5-PHOTON-DUST-104340-1669606074241.jpeg?w=480" width="480" height="480" loading="lazy" decoding="async" alt="Nike Zoom Vomero 5 Photon Dust i silvergrått">
+          <figcaption>Nike · Sulans profil</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1761552037/851138_4HBH9_4466_002_100_0000_Light-gg-canvas-baseball-hat.jpg" width="1200" height="1200" loading="lazy" decoding="async" alt="Gucci-keps med GG-mönster och böjd skärm">
+          <figcaption>Gucci · Kepsens form</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/943J605A0554C080_E01-3?%24default_GHC%24=&amp;crop=438%2C150%2C1130%2C1358&amp;wid=480" width="480" height="577" loading="lazy" decoding="async" alt="Vit Dior CD Icon-t-shirt med rund halsringning">
+          <figcaption>Dior · Halsringning</figcaption>
+        </figure>
+        <figure>
+          <img src="https://ec-image.gc-yukizaki.jp/1000/j420131-1.jpg" width="1000" height="1000" loading="lazy" decoding="async" alt="Hermès Chaîne d’Ancre-armband i silver med ankarlänkar">
+          <figcaption>Hermès · Armbandets länkar</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq">
+      <h2 id="faq">Vanliga frågor om FSBuy spreadsheet</h2>
+      <details open>
+        <summary>Vad är ett FSBuy spreadsheet?</summary>
+        <p>Det är en produktlista i kalkylbladsformat som kan samla säljlänkar, varianter och egna anteckningar. Den här guiden visar hur du bygger en egen lista och länkar till kategorier hos Hipobuyfind.</p>
+      </details>
+      <details>
+        <summary>Var hittar jag skorna och kläderna?</summary>
+        <p>Använd kategorierna högst upp. De öppnar motsvarande katalogsidor hos Hipobuyfind. Kontrollera modell, storlek och aktuell tillgänglighet på den enskilda produktsidan.</p>
+      </details>
+      <details>
+        <summary>Vad ska jag granska på ett QC-foto?</summary>
+        <p>Kontrollera att bilden gäller rätt variant. Titta sedan på de detaljer som påverkar ditt val, till exempel sömmar, sulans kant eller ett spänne. För ett mått behöver du en bild där skalan går att läsa.</p>
+      </details>
+      <details>
+        <summary>Hur jämför jag den uppskattade kostnaden till Sverige?</summary>
+        <p>Räkna om varupriset till SEK med samma valutakurs för alla alternativ. Lägg till kända avgifter och uppskattad frakt. Kontrollera om importkostnader redan ingår innan du summerar.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Fristående inköpsguide · <a href="https://www.hipobuyfind.com">Besök Hipobuyfind</a></p>
+  </footer>
+</body>
+</html>
